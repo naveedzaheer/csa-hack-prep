@@ -1,0 +1,73 @@
+{
+	"id": "3",
+	"type": "Work",
+	"description": "Complete Logic App",
+	"owner": "John",
+	"status": "Not Started"
+}
+
+npx create-react-app csa-tasks
+
+npm install --save mdbreact
+
+npm install --save axios
+
+npm install bootstrap
+
+npm install uuid
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+============================================================
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=nzcsahack;AccountKey=INhqkfTIzuaLQt4RAzpGxKtXLgoH9pdgFHO/xbxiwhnWuHgLyQgozCGr5rqBLYN4y4JKv3TPyj+cvQkPQIyB6g==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "CosmosDBConnection": "AccountEndpoint=https://csahacktasks.documents.azure.com:443/;AccountKey=QzdojpdgSsB6EBV32WBtZdwIXyHanDwrOZKQMTi2mNb4dD9D3rypuiVOUV3pCWEkCpsL91sjv7yB2uO7kVioKw==;"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}
+
+============================================================
+Get Tasks
+
+,
+    {
+      "type": "cosmosDB",
+      "name": "tasks",
+      "databaseName": "Tasks",
+      "collectionName": "Items",
+      "sqlQuery": "SELECT * from c",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in"
+    }
+
+/////////
+
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var tasks = context.bindings.tasks;
+    for (var i = 0; i < tasks.length; i++) {
+        var task = tasks[i];
+        context.log("Found Task, Description=" + task.description);
+    }
+
+
+    context.res = {
+        status: 200,
+        body: tasks,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+};
+
+============================================================
+Get Task
+
+

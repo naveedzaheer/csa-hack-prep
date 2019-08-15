@@ -7,10 +7,10 @@ function deleteTask(id, e) {
     var result = window.confirm("Are you sure you wish to delete this item?");
     if (result == true) {
         const headers = {
-            'Ocp-Apim-Subscription-Key': '',
+            'Ocp-Apim-Subscription-Key': 'cbe13a8601f641549f6d8f6d90ef46ec;product=evaluation',
             'content-type': 'application/json'
         };
-        var apiUrl = 'https://prod-32.westus.logic.azure.com:443/workflows/8f8e6015b43f4201bb04f01f1fb1ce93/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=67q8RpJRbW3WuWp34DS3AnI7Z6k0wkZa7IaVMPLDyxE';
+        var apiUrl = 'https://nzcsahack.azure-api.net/Tasks/delete';
         var postData = "{'id':'" + id + "'}";
         axios.post(apiUrl, postData, { headers })
         .then(response => {
