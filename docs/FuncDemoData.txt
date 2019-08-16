@@ -6,6 +6,8 @@
 	"status": "Not Started"
 }
 
+https://nzcsahacksite.z22.web.core.windows.net/
+npm run build
 ============================================================
 host.json
 

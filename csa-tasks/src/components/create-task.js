@@ -62,10 +62,10 @@ export default class CreateTask extends Component {
         }
 
         const headers = {
-            'Ocp-Apim-Subscription-Key': ''
+            'Ocp-Apim-Subscription-Key': 'cbe13a8601f641549f6d8f6d90ef46ec;product=evaluation'
         };
 
-        var apiUrl = 'https://prod-121.westus.logic.azure.com:443/workflows/67df82d2bd64468b89e8ee6719f12e87/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XoJtaCl4GvwUT-x2pxV1W5C6Tt1hiZYshzrMg25x6A4';
+        var apiUrl = 'https://nzcsahack.azure-api.net/Tasks/upsert';
         axios.post(apiUrl, newTask, { headers })
             .then(response => {
                 this.setState({

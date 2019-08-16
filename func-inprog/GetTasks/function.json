@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route":"taskItems"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "tasks",
+      "databaseName": "Tasks",
+      "collectionName": "Items",
+      "sqlQuery": "SELECT * from c",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
